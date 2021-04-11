@@ -10,13 +10,13 @@ class Table:
         self.canvas.pack()
 
         if(vertical_net):
-            self.canvas.create_line(self.width/2, 0, self.width/2, self.height, width=2, fill=net_colour, dash=(15, 23))
+            self.canvas.create_line(self.width/2, 0, self.width/2, self.height, width=3, fill=net_colour, dash=(15, 23))
 
         if(horizontal_net):
-            self.canvas.create_line(0, self.height/2, self.width, self.height/2, width=2, fill=net_colour, dash=(15, 23))
+            self.canvas.create_line(0, self.height/2, self.width, self.height/2, width=3, fill=net_colour, dash=(15, 23))
 
         font = ('monaco', 72)
-        self.scoreboard = self.canvas.create_text(300, 65, font=font, fill='darkgreen')
+        self.scoreboard = self.canvas.create_text(300, 65, font=font, fill='orange3')
 
 
     def draw_rectangle(self, rectangle):

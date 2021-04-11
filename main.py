@@ -2,25 +2,25 @@ from tkinter import *
 import table, ball, bat
 
 #initialse globals
-x_velocity = 10
-y_velocity = 10
+x_velocity = 14
+y_velocity = 14
 score_left = 0
 score_right = 0
 first_serve = True
 
 #order a window from tkinter
 window = Tk()
-window.title('pongtwo')
+window.title('PongTwo - David Ikin 2020 - github.com/deye1986 ')
 
 #order a table from the table.py file
-my_table = table.Table(window, net_colour='white', vertical_net=True)
+my_table = table.Table(window, net_colour='Green', vertical_net=True)
 
 #order a ball from ball.py file
-my_ball = ball.Ball(table=my_table, x_speed=x_velocity, y_speed=y_velocity, width=24, height=24, colour='red', x_start=288, y_start=188)
+my_ball = ball.Ball(table=my_table, x_speed=x_velocity, y_speed=y_velocity, width=24, height=24, colour='MediumPurple4', x_start=288, y_start=188)
 
 #order bats
-bat_L = bat.Bat(table=my_table, width=15, height=100, x_posn=20, y_posn=150, colour='green')
-bat_R = bat.Bat(table=my_table, width=15, height=100, x_posn=575, y_posn=150, colour='red')
+bat_L = bat.Bat(table=my_table, width=15, height=100, x_posn=20, y_posn=150, colour='blue')
+bat_R = bat.Bat(table=my_table, width=15, height=100, x_posn=575, y_posn=150, colour='HotPink')
 
 
 def game_flow():
@@ -40,6 +40,8 @@ def game_flow():
     #detect if ball has hit left wall
     if(my_ball.x_posn <=3):
         my_ball.stop_ball()
+        score_right =+ 1
+        my_table.draw_score(score_left, score_right)
         my_ball.start_position()
         bat_L.start_position()
         bat_R.start_position()
@@ -51,6 +53,8 @@ def game_flow():
     window.after(50, game_flow)
     if(my_ball.x_posn + my_ball.width >= my_table.width - 3):
         my_ball.stop_ball()
+        score_left =+ 1
+        my_table.draw_score(score_left, score_right)
         my_ball.start_position()
         bat_L.start_position()
         bat_R.start_position()
@@ -71,6 +75,10 @@ window.bind('a', bat_L.move_up)
 window.bind('z', bat_L.move_down)
 window.bind('k', bat_R.move_up)
 window.bind('m', bat_R.move_down)
+window.bind('A', bat_L.move_up)
+window.bind('Z', bat_L.move_down)
+window.bind('K', bat_R.move_up)
+window.bind('M', bat_R.move_down)
 window.bind('<space>', restart_game)
 
 #call the game_flow loop
