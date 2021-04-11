@@ -40,7 +40,7 @@ def game_flow():
     #detect if ball has hit left wall
     if(my_ball.x_posn <=3):
         my_ball.stop_ball()
-        score_right =+ 1
+        score_left =+ 1
         my_table.draw_score(score_left, score_right)
         my_ball.start_position()
         bat_L.start_position()
@@ -53,7 +53,7 @@ def game_flow():
     window.after(50, game_flow)
     if(my_ball.x_posn + my_ball.width >= my_table.width - 3):
         my_ball.stop_ball()
-        score_left =+ 1
+        score_right =+ 1
         my_table.draw_score(score_left, score_right)
         my_ball.start_position()
         bat_L.start_position()
